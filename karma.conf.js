@@ -3,16 +3,22 @@ module.exports = function(config) {
   config.set({
     frameworks: ['mocha', 'browserify'],
 
+    browsers: ['PhantomJS'],
+
     files: [
       'test/*.js'
     ],
+
+    preprocessors: {
+      'test/*.js': 'browserify'
+    },
 
     browserify: {
       debug: true
     },
 
-    preprocessors: {
-      'test/*.js': 'browserify'
+    phantomjsLauncher: {
+      exitOnResourceError: true
     },
 
     autoWatch: true,
