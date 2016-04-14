@@ -1,4 +1,4 @@
-# j
+# j [![Build Status](https://travis-ci.org/akenn/j.svg?branch=master)](https://travis-ci.org/akenn/j)
 
 > A small, jquery-like library
 
@@ -14,6 +14,6 @@ $div.addClass('header');
 
 $(document.body).append($div);
 
-console.log($('document div').hasClass('header'));
+console.log($('body div').hasClass('header'));
 //=> true
 ```
