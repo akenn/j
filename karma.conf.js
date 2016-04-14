@@ -17,6 +17,8 @@ module.exports = function(config) {
       debug: true
     },
 
+    singleRun: process.env.CI ? true : false,
+
     phantomjsLauncher: {
       exitOnResourceError: true
     },
