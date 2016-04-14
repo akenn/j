@@ -1,0 +1,23 @@
+{
+  "name": "j",
+  "version": "0.0.1",
+  "description": "A minimal jquery-like library",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "keywords": [
+    "jquery"
+  ],
+  "author": "Andrew Kennedy <andrew@akenn.org>",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "chai": "^3.5.0",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.3",
+    "karma-mocha": "^0.2.2",
+    "mocha": "^2.4.5",
+    "watchify": "^3.7.0"
+  }
+}
