@@ -1,6 +1,12 @@
 var assert = require('chai').assert;
 
 var $ = require('../');
+if (Element && !Element.prototype.matches) {
+    var proto = Element.prototype;
+    proto.matches = proto.matchesSelector ||
+        proto.mozMatchesSelector || proto.msMatchesSelector ||
+        proto.oMatchesSelector || proto.webkitMatchesSelector;
+}
 
 describe('Methods', function() {
   describe('addClass', function() {
@@ -27,5 +33,18 @@ describe('Methods', function() {
       var $div = $('<div>').addClass('className1');
       assert.equal(originalClassname, div.el.className);
     });
+  });
+
+  describe('closest', function() {
+    it('should add a classname to the element\'s classname', function () {
+      var parent = $('<div>').addClass('parent');
+      var child1 = $('<div>').addClass('child');
+      var child2 = $('<div>').addClass('child');
+      child1.append(child2);
+      parent.append(child1);
+
+      assert.equal(child2.closest('.child').el, child1.el);
+      assert.equal(child2.closest('.parent').el, parent.el);
+    }); 
   });
 });

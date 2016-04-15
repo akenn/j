@@ -28,7 +28,9 @@ $.prototype.append = function(element) {
     element = element.el;
   }
 
-  return this.el.appendChild(element);
+  this.el.appendChild(element);
+
+  return this;
 }
 
 $.prototype.hasClass = function(className) {
@@ -86,17 +88,16 @@ $.prototype.closest = function(selector) {
     return null;
   }
 
-  function isRoot(node) {
-    return !node || !node.parentNode;
-  }
+  var curNode = this.el.parentNode;
 
-  var curNode = this.el;
-
-  while (curNode && !isRoot(curNode) && !curNode.matches(selector)) {
+  while (curNode) {
+    if (curNode.matches(selector)) {
+      return $(curNode);
+    }
     curNode = curNode.parentNode;
   }
 
-  return isRoot(curNode) ? null : curNode;
+  return null;
 }
 
 module.exports = $;
