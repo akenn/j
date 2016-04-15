@@ -82,7 +82,21 @@ $.prototype.text = function(text) {
 }
 
 $.prototype.closest = function(selector) {
+  if (!selector) {
+    return null;
+  }
 
+  function isRoot(node) {
+    return !node || !node.parentNode;
+  }
+
+  var curNode = this.el;
+
+  while (curNode && !isRoot(curNode) && !curNode.matches(selector)) {
+    curNode = curNode.parentNode;
+  }
+
+  return isRoot(curNode) ? null : curNode;
 }
 
 module.exports = $;
