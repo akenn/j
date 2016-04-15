@@ -1,12 +1,4 @@
-var assert = require('chai').assert;
-
-var $ = require('../');
-if (Element && !Element.prototype.matches) {
-    var proto = Element.prototype;
-    proto.matches = proto.matchesSelector ||
-        proto.mozMatchesSelector || proto.msMatchesSelector ||
-        proto.oMatchesSelector || proto.webkitMatchesSelector;
-}
+'use strict';
 
 describe('Methods', function() {
   describe('addClass', function() {
@@ -36,7 +28,7 @@ describe('Methods', function() {
   });
 
   describe('closest', function() {
-    it('should add a classname to the element\'s classname', function () {
+    it('should find the closest parent given a valid selector', function () {
       var parent = $('<div>').addClass('parent');
       var child1 = $('<div>').addClass('child');
       var child2 = $('<div>').addClass('child');

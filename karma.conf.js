@@ -1,3 +1,5 @@
+'use strict';
+
 // karma.conf.js
 module.exports = function(config) {
   config.set({
@@ -6,7 +8,9 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
 
     files: [
-      'test/*.js'
+      'test/setup.js',
+      '!test/polyfills.js',
+      'test/*.js',
     ],
 
     preprocessors: {
