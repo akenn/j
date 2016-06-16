@@ -27,6 +27,16 @@ describe('Methods', function() {
     });
   });
 
+  describe('parent', function() {
+    it('should return the parent node', function () {
+      var parent = $('<div>');
+      var child = $('<div>');
+      parent.append(child);
+
+      assert.equal(child.parent().el, parent.el);
+    });
+  });
+
   describe('closest', function() {
     it('should find the closest parent given a valid selector', function () {
       var parent = $('<div>').addClass('parent');
@@ -37,6 +47,36 @@ describe('Methods', function() {
 
       assert.equal(child2.closest('.child').el, child1.el);
       assert.equal(child2.closest('.parent').el, parent.el);
-    }); 
+    });
+  });
+
+  describe('remove', function() {
+    it('should remove a child node from its parent', function () {
+      var parent = $('<div>');
+      var child1 = $('<div>');
+      parent.append(child1);
+
+      assert.equal(child1.el.parentNode, parent.el);
+      assert.equal(parent.el.childNodes.length, 1);
+
+      parent.remove(child1);
+
+      assert.notEqual(child1.el.parentNode, parent.el);
+      assert.equal(parent.el.childNodes.length, 0);
+    });
+
+    it('should remove itself from the dom if called without arguments', function () {
+      var parent = $('<div>');
+      var child1 = $('<div>');
+      parent.append(child1);
+
+      assert.equal(child1.el.parentNode, parent.el);
+      assert.equal(parent.el.childNodes.length, 1);
+
+      child1.remove();
+
+      assert.notEqual(child1.el.parentNode, parent.el);
+      assert.equal(parent.el.childNodes.length, 0);
+    });
   });
 });

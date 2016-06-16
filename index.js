@@ -33,6 +33,29 @@ $.prototype.append = function(element) {
   return this;
 }
 
+$.prototype.remove = function(element) {
+  if (!this.el) {
+    return null;
+  }
+
+  // if an element is provided, remove the element
+  if (element) {
+    if (element instanceof $) {
+      element = element.el;
+    }
+
+    return this.el.removeChild(element);
+  }
+
+  // if no element is provided, remove the current node
+  var parentNode = this.el.parentNode;
+  if (parentNode) {
+    return parentNode.removeChild(this.el);
+  }
+
+  return null;
+}
+
 $.prototype.hasClass = function(className) {
   if (!className || !this.el || !this.el.className) {
     return false;
@@ -81,6 +104,15 @@ $.prototype.text = function(text) {
   text = div.innerHTML;
 
   return this.html(text);
+}
+
+$.prototype.parent = function() {
+  var parent = this.el.parentNode;
+
+  if (parent) {
+    return $(parent);
+  }
+  return null;
 }
 
 $.prototype.closest = function(selector) {
