@@ -1,4 +1,4 @@
-# j [![Build Status](https://travis-ci.org/akenn/j.svg?branch=master)](https://travis-ci.org/akenn/j)
+# jli [![Build Status](https://travis-ci.org/akenn/j.svg?branch=master)](https://travis-ci.org/akenn/j)
 
 > A small, jquery-like library
 
@@ -81,7 +81,7 @@ Options:
 ## Examples
 
 ```js
-var $ = require('j');
+var $ = require('jli');
 
 var $div = $('<div>');
 $div.addClass('header');
