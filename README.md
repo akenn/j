@@ -1,8 +1,28 @@
-# jli [![Build Status](https://travis-ci.org/akenn/j.svg?branch=master)](https://travis-ci.org/akenn/j)
+# jli [![Build Status](https://travis-ci.org/akenn/jli.svg?branch=master)](https://travis-ci.org/akenn/jli)
 
 > A small, jquery-like library
 
 This is still very much a work in progress. I'm writing this for learning and for fun.
+
+## Install
+
+```
+$ npm install jli
+```
+
+## Usage
+
+```js
+var $ = require('jli');
+
+var $div = $('<div>');
+$div.addClass('header');
+
+$(document.body).append($div);
+
+console.log($('body div').hasClass('header'));
+//=> true
+```
 
 ## API
 
@@ -77,17 +97,3 @@ Options:
 #### `.closest(selector)`
 
 > Returns the closest parent node of the current `$` element matching the given selector
-
-## Examples
-
-```js
-var $ = require('jli');
-
-var $div = $('<div>');
-$div.addClass('header');
-
-$(document.body).append($div);
-
-console.log($('body div').hasClass('header'));
-//=> true
-```
